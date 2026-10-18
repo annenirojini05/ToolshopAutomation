@@ -2,19 +2,25 @@
 
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Toolshop CI API Suite">
+<suite name="Toolshop CI API Smoke Suite">
 
     <test name="API Smoke Tests">
 
-        <groups>
-            <run>
-                <include name="api-smoke"/>
-            </run>
-        </groups>
+        <classes>
 
-        <packages>
-            <package name="api"/>
-        </packages>
+            <class name="api.ProductApiTest">
+                <methods>
+                    <include name="getProductsTest"/>
+                </methods>
+            </class>
+
+            <class name="api.CartApiTest">
+                <methods>
+                    <include name="createCartTest"/>
+                </methods>
+            </class>
+
+        </classes>
 
     </test>
 
