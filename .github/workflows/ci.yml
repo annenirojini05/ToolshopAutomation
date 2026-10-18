@@ -27,17 +27,21 @@ jobs:
           java-version: '17'
           cache: maven
 
+      - name: Check Toolshop availability
+        run: |
+          curl -I https://practicesoftwaretesting.com
+
       - name: Run Toolshop smoke tests
         run: >
           mvn clean test
           "-Dheadless=true"
           "-Dsurefire.suiteXmlFiles=src/test/resources/smoke-testng.xml"
 
-      - name: Upload test reports
+      - name: Upload test evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
+          name: toolshop-test-evidence
           path: |
-            target/surefire-reports
             target/screenshots
+            target/surefire-reports

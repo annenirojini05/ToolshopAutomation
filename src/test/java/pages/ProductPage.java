@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utilities.ScreenshotUtils;
 import utilities.WaitUtils;
 import org.openqa.selenium.StaleElementReferenceException;
 
@@ -34,10 +35,19 @@ public class ProductPage {
 
         waitUtils.waitForPageLoad();
 
+        System.out.println(
+                "Search elements found: "
+                        + driver.findElements(searchField).size()
+        );
+
+        ScreenshotUtils.captureScreenshot(
+                driver,
+                "before_product_search"
+        );
+
         waitUtils.waitForVisible(searchField);
 
-        driver.findElement(searchField)
-                .clear();
+        driver.findElement(searchField).clear();
 
         driver.findElement(searchField)
                 .sendKeys(productName);

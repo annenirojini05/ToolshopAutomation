@@ -65,6 +65,21 @@ public class BaseTest {
         driver.get(
                 baseUrl
         );
+
+        System.out.println("Requested Base URL: " + baseUrl);
+        System.out.println("Current URL: " + driver.getCurrentUrl());
+        System.out.println("Page Title: " + driver.getTitle());
+
+        String pageSource = driver.getPageSource();
+
+        System.out.println(
+                "Page Source Length: " + pageSource.length()
+        );
+
+        System.out.println(
+                "Search element present in HTML: "
+                        + pageSource.contains("search-query")
+        );
     }
 
 
