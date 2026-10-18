@@ -98,7 +98,7 @@ public class CartApiTest extends BaseApiTest {
 
 
     // Test 1 - Create an empty cart
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke","api-smoke", "regression"})
     public void createCartTest() {
 
         String cartId =

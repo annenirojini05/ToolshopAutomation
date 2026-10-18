@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 
 public class ProductApiTest extends BaseApiTest {
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "api-smoke","regression"})
     public void getProductsTest() {
 
         Response response =

@@ -9,7 +9,7 @@ import pages.ProductPage;
 
 public class CartTest extends BaseTest {
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "ui-smoke","regression"})
     public void addProductToCartTest() {
 
         ProductPage productPage =

@@ -7,7 +7,7 @@ import pages.ProductPage;
 
 public class ProductSearchTest extends BaseTest {
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke","ui-smoke", "regression"})
     public void validProductSearchTest() {
 
         ProductPage productPage =

@@ -34,7 +34,6 @@ jobs:
       - name: Run Toolshop smoke tests
         run: >
           mvn clean test
-          "-Dheadless=true"
           "-Dsurefire.suiteXmlFiles=src/test/resources/smoke-testng.xml"
 
       - name: Upload test evidence
