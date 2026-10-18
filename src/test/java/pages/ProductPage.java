@@ -32,11 +32,15 @@ public class ProductPage {
 
     public void enterSearchTerm(String productName) {
 
+        waitUtils.waitForPageLoad();
+
         waitUtils.waitForVisible(searchField);
 
-        driver.findElement(searchField).clear();
+        driver.findElement(searchField)
+                .clear();
 
-        driver.findElement(searchField).sendKeys(productName);
+        driver.findElement(searchField)
+                .sendKeys(productName);
     }
 
     public void clickSearch() {

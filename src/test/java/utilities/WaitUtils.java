@@ -1,6 +1,7 @@
 package utilities;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,16 +10,33 @@ import java.time.Duration;
 
 public class WaitUtils {
 
+    private final WebDriver driver;
     private final WebDriverWait wait;
 
     public WaitUtils(WebDriver driver) {
 
+        this.driver = driver;
+
         this.wait =
                 new WebDriverWait(
                         driver,
-                        Duration.ofSeconds(10)
+                        Duration.ofSeconds(30)
                 );
     }
+
+
+    public void waitForPageLoad() {
+
+        wait.until(
+                webDriver ->
+                        ((JavascriptExecutor) webDriver)
+                                .executeScript(
+                                        "return document.readyState"
+                                )
+                                .equals("complete")
+        );
+    }
+
 
     public void waitForVisible(By locator) {
 
@@ -28,6 +46,7 @@ public class WaitUtils {
         );
     }
 
+
     public void waitForClickable(By locator) {
 
         wait.until(
@@ -35,6 +54,7 @@ public class WaitUtils {
                         .elementToBeClickable(locator)
         );
     }
+
 
     public void waitForInvisible(By locator) {
 
@@ -44,33 +64,12 @@ public class WaitUtils {
         );
     }
 
-    public boolean waitForUrlContains(String value) {
+
+    public boolean waitForUrlContains(String text) {
 
         return wait.until(
                 ExpectedConditions
-                        .urlContains(value)
-        );
-    }
-
-    public void waitForPresence(By locator) {
-
-        wait.until(
-                ExpectedConditions
-                        .presenceOfElementLocated(locator)
-        );
-    }
-
-    public void waitForNumberOfElementsMoreThan(
-            By locator,
-            int number
-    ) {
-
-        wait.until(
-                ExpectedConditions
-                        .numberOfElementsToBeMoreThan(
-                                locator,
-                                number
-                        )
+                        .urlContains(text)
         );
     }
 }

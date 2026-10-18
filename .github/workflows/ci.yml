@@ -32,3 +32,12 @@ jobs:
           mvn clean test
           "-Dheadless=true"
           "-Dsurefire.suiteXmlFiles=src/test/resources/smoke-testng.xml"
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            target/surefire-reports
+            target/screenshots
